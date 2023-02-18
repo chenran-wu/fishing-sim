@@ -3,16 +3,34 @@ import time
 
 
 SC_chance = 20
-fishing_speed_multiplier = 1
+fishing_speed_multiplier = 0.0001
 XP = 0
 coins = 0
+discs = [
+    "green",
+    "red",
+    "yellow and green",
+    "white",
+    "purple and white",
+    "blue and green",
+    "black and red",
+    "broken",
+    "yellow and white",
+    "black",
+    "purple",
+    "blue"
+]
+
+inventory = [
+
+]
 
 
 def fish():
     global XP, coins
     time_for_fish = 20 * fishing_speed_multiplier
     time.sleep(time_for_fish)
-    if random.randint(1, 20) != 21:
+    if random.randint(20, 20) != 20:  # 1, 20
         randnum = random.randint(1, 108)
         if randnum <= 60:
             print("You caught a cod and sold it for 6 coins.")
@@ -30,10 +48,53 @@ def fish():
             print("You caught a clownfish and sold it for 20 coins.")
             XP += 100
             coins += 20
-        elif randnum <= 108:
+        else:
             print("You caught some clay and sold them for 12 coins.")
             XP += 30
             coins += 12
+    elif random.randint(1, 10) != 11:  # 10
+        randnum = random.randint(1, 88)
+        if randnum <= 15:
+            randnum = random.randint(1000, 10000)
+            print(f"You fished up {randnum} coins.")
+            XP += 160
+            coins += randnum
+        elif randnum <= 30:
+            print("You caught a bait (unimplimented).")
+            XP += 160
+            coins += 0
+            inventory.append("bait")
+        elif randnum <= 45:
+            disc = random.choice(discs), "disc"
+            print("You caught a", disc)
+            XP += 160
+            coins += 10
+            inventory.append(disc)
+        elif randnum <= 55:
+            print(f"You fished up a golden apple and sold it for 125 coins.")
+            XP += 160
+            coins += 125
+        elif randnum <= 65:
+            print(
+                f"You fished up a big bottle of green potions and sold it for 4000 coins")
+            XP += 160
+            coins += 4000
+        elif randnum <= 73:
+            print(f"You fished up a sea lantern and sold it for 60 coins")
+            XP += 160
+            coins += 60
+        elif randnum <= 78:
+            print(f"You fished up a prismarine shard and sold it for 5 coins")
+            XP += 50
+            coins += 5
+        elif randnum <= 83:
+            print(f"You fished up a prismarine crystal and sold it for 5 coins")
+            XP += 50
+            coins += 5
+        else:
+            print(f"You fished up a piece of sponge and sold it for 50 coins")
+            XP += 160
+            coins += 50
 
 
 while True:
@@ -45,6 +106,7 @@ while True:
 f - fish
 h - help
 s - stats
+h - hack(debug)
 q - quit
         """)
     elif cmd == "s":
@@ -52,5 +114,6 @@ q - quit
 XP: {XP}
 Coins: {coins}
         """)
+        print(inventory)
     elif cmd == "q":
         quit()
