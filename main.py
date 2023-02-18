@@ -6,24 +6,9 @@ SC_chance = 20
 fishing_speed_multiplier = 0.0001
 XP = 0
 coins = 0
-discs = [
-    "green",
-    "red",
-    "yellow and green",
-    "white",
-    "purple and white",
-    "blue and green",
-    "black and red",
-    "broken",
-    "yellow and white",
-    "black",
-    "purple",
-    "blue"
-]
 
-inventory = [
 
-]
+inventory = []
 
 
 def fish():
@@ -65,11 +50,9 @@ def fish():
             coins += 0
             inventory.append("bait")
         elif randnum <= 45:
-            disc = random.choice(discs), "disc"
-            print("You caught a", disc)
+            print("You caught a music disc")
             XP += 160
-            coins += 10
-            inventory.append(disc)
+            inventory.append("music disc")
         elif randnum <= 55:
             print(f"You fished up a golden apple and sold it for 125 coins.")
             XP += 160
@@ -114,6 +97,6 @@ q - quit
 XP: {XP}
 Coins: {coins}
         """)
-        print(inventory)
+        print("inventory:", inventory)
     elif cmd == "q":
         quit()
