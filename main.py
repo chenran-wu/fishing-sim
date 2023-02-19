@@ -1,12 +1,10 @@
 import random
 import time
 
-
 SC_chance = 20
 fishing_speed_multiplier = 0.0001
 XP = 0
 coins = 0
-
 
 inventory = []
 
